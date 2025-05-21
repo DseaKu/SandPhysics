@@ -20,13 +20,13 @@ void updating_grid(const Grid current_grid, Grid *update_grid) {
         }
 
         // Try to move down-right, if down-right is empty and within bounds
-        else if (current_grid[x + 1][y + 1] == 0 && x < GRID_WIDTH - 1) {
+        else if (x < GRID_WIDTH - 1 && current_grid[x + 1][y + 1] == 0) {
 
           (*update_grid)[x + 1][y + 1] = 1;
         }
 
         // Try to move down-left, if down-left is empty and within bounds
-        else if (current_grid[x - 1][y + 1] == 0 && x > 0) {
+        else if (x > 0 && current_grid[x - 1][y + 1] == 0) {
 
           (*update_grid)[x - 1][y + 1] = 1;
         }
