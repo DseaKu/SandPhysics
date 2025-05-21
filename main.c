@@ -7,6 +7,7 @@
 #include <unistd.h>
 
 int main(void) {
+
   // Initialize SDL
   if (SDL_Init(SDL_INIT_VIDEO) < 0) {
     printf("SDL could not initialize! SDL_Error: %s\n", SDL_GetError());
@@ -67,19 +68,8 @@ int main(void) {
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     SDL_RenderClear(renderer);
 
-    // Iterate grid and render rects
-    for (uint y = 0; y < GRID_HEIGHT; y++) {
-      for (uint x = 0; x < GRID_WIDTH; x++) {
-        if (render_grid[x][y] == 1) {
-
-          // Draw a red rectangle
-          SDL_Rect rect = {x * SQUARE_LENGTH, y * SQUARE_LENGTH, SQUARE_LENGTH,
-                           SQUARE_LENGTH};
-          SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
-          SDL_RenderFillRect(renderer, &rect);
-        }
-      }
-    }
+    // Add all squares to renderer
+    rendering_grid(render_grid, renderer);
 
     // Updating grid
     Grid update_grid = {0};

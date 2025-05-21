@@ -43,3 +43,20 @@ void synchronize_grid(Grid *current_grid, Grid *update_grid) {
     }
   }
 }
+
+void rendering_grid(const Grid render_grid, SDL_Renderer *renderer) {
+
+  // Iterate grid and render rects
+  for (uint y = 0; y < GRID_HEIGHT; y++) {
+    for (uint x = 0; x < GRID_WIDTH; x++) {
+      if (render_grid[x][y] == 1) {
+
+        // Draw a red rectangle
+        SDL_Rect rect = {x * SQUARE_LENGTH, y * SQUARE_LENGTH, SQUARE_LENGTH,
+                         SQUARE_LENGTH};
+        SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+        SDL_RenderFillRect(renderer, &rect);
+      }
+    }
+  }
+}
