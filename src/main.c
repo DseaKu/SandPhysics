@@ -1,12 +1,6 @@
 #include "../includes/grid_types.h"
 #include "gravity_engine/gravity_engine.h"
 #include "input/mouse_handler.h"
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_timer.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <sys/types.h>
-#include <unistd.h>
 
 int main(void) {
 
@@ -51,8 +45,8 @@ int main(void) {
   // Event handler
   SDL_Event e;
 
+  // Rendering grid matrix
   Grid render_grid = {0};
-  render_grid[4][2] = 1;
 
   // Main application loop
   while (!quit) {
@@ -84,13 +78,14 @@ int main(void) {
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     SDL_RenderClear(renderer);
 
-    // Add all squares to renderer
+    // Add all squares to render matrix
     rendering_grid(render_grid, renderer);
 
-    // Updating grid
+    // Updating physics
     Grid update_grid = {0};
     updating_grid(render_grid, &update_grid);
 
+    // Synchronize grids
     synchronize_grid(&render_grid, &update_grid);
 
     // Update the screen

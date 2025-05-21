@@ -2,11 +2,10 @@
 #define GRAVITY_TYPES_H
 
 // Libraries
+#include "sdl_utils.h"
 #include <stdint.h>
 
 // Constants
-#define WINDOW_WIDTH 1200
-#define WINDOW_HEIGHT 1000
 #define SQUARE_LENGTH 10
 #define GRID_HEIGHT (WINDOW_HEIGHT / SQUARE_LENGTH)
 #define GRID_WIDTH (WINDOW_WIDTH / SQUARE_LENGTH)

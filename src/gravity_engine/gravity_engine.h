@@ -2,8 +2,7 @@
 #define GRAVITY_ENGINE_H
 
 #include "../../includes/grid_types.h"
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_render.h>
+#include "../../includes/sdl_utils.h"
 
 // Constants
 #define SQUARE_LENGTH 10
