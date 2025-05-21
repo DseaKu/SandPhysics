@@ -1,4 +1,6 @@
-#include "gravity_engine.h"
+#include "../includes/grid_types.h"
+#include "gravity_engine/gravity_engine.h"
+#include "input/mouse_handler.h"
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_timer.h>
 #include <stdint.h>
@@ -6,7 +8,6 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-void handle_mouse_click(Grid *grid, int mouseX, int mouseY);
 int main(void) {
 
   // Initialize SDL
@@ -107,15 +108,4 @@ int main(void) {
   SDL_Quit();
 
   return 0;
-}
-
-void handle_mouse_click(Grid *grid, int mouseX, int mouseY) {
-  // Convert screen coordinates to grid coordinates
-  int gridX = mouseX / SQUARE_LENGTH;
-  int gridY = mouseY / SQUARE_LENGTH;
-
-  // Ensure coordinates are within bounds
-  if (gridX >= 0 && gridX < GRID_WIDTH && gridY >= 0 && gridY < GRID_HEIGHT) {
-    (*grid)[gridX][gridY] = 1;
-  }
 }
