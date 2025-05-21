@@ -1,5 +1,3 @@
-# Makefile for SDL2 Window Program
-
 # Compiler settings
 CC = gcc
 CFLAGS = -Wall -Wextra -std=c11 -g
@@ -10,7 +8,7 @@ SDL_LIBS := $(shell sdl2-config --libs)
 
 # Targets
 TARGET = Falling_Sand
-SRC = main.c
+SRC = main.c gravity_engine.c
 OBJ = $(SRC:.c=.o)
 
 # Default target

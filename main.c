@@ -1,16 +1,10 @@
+#include "gravity_engine.h"
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_timer.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <sys/types.h>
 #include <unistd.h>
-
-#define WINDOW_WIDTH 1200
-#define WINDOW_HEIGHT 1000
-#define SQUARE_LENGTH 10
-
-#define GRID_HEIGHT WINDOW_HEIGHT / SQUARE_LENGTH
-#define GRID_WIDTH WINDOW_WIDTH / SQUARE_LENGTH
 
 int main(void) {
   // Initialize SDL
@@ -54,11 +48,10 @@ int main(void) {
   // Event handler
   SDL_Event e;
 
-  uint a2iRenderGrid[GRID_WIDTH][GRID_HEIGHT] = {0};
-
-  a2iRenderGrid[4][8] = 1;
-  a2iRenderGrid[4][2] = 1;
-  a2iRenderGrid[8][3] = 1;
+  Grid render_grid = {0};
+  render_grid[4][8] = 1;
+  render_grid[4][2] = 1;
+  render_grid[8][3] = 1;
   // Main application loop
   while (!quit) {
 
@@ -77,7 +70,7 @@ int main(void) {
     // Iterate grid and render rects
     for (uint y = 0; y < GRID_HEIGHT; y++) {
       for (uint x = 0; x < GRID_WIDTH; x++) {
-        if (a2iRenderGrid[x][y] == 1) {
+        if (render_grid[x][y] == 1) {
 
           // Draw a red rectangle
           SDL_Rect rect = {x * SQUARE_LENGTH, y * SQUARE_LENGTH, SQUARE_LENGTH,
@@ -89,34 +82,37 @@ int main(void) {
     }
 
     // Update grid
-    uint a2iUpdateGrid[GRID_WIDTH][GRID_HEIGHT] = {0};
+    Grid update_grid = {0};
+
+    updating_grid(render_grid);
+
     for (uint x = 0; x < GRID_WIDTH; x++) {
       for (uint y = 0; y < GRID_HEIGHT; y++) {
 
         // Gravity logic
         // Found square in grid
-        if (a2iRenderGrid[x][y] != 0) {
+        if (render_grid[x][y] != 0) {
 
           // Stay if square is ground
           if (y == GRID_HEIGHT - 1) {
-            a2iUpdateGrid[x][y] = 1;
+            update_grid[x][y] = 1;
           }
 
           // Try to move down, if under square is empty
-          else if (a2iRenderGrid[x][y + 1] == 0) {
-            a2iUpdateGrid[x][y + 1] = 1;
+          else if (render_grid[x][y + 1] == 0) {
+            update_grid[x][y + 1] = 1;
           }
 
           // Try to move down-right, if down-right is empty
-          else if (a2iRenderGrid[x + 1][y + 1] == 0) {
+          else if (render_grid[x + 1][y + 1] == 0) {
 
-            a2iUpdateGrid[x + 1][y + 1] = 1;
+            update_grid[x + 1][y + 1] = 1;
           }
           //
           // Try to move down-left, if down-left is empty
-          else if (a2iRenderGrid[x - 1][y - 1] == 0) {
+          else if (render_grid[x - 1][y - 1] == 0) {
 
-            a2iUpdateGrid[x - 1][y - 1] = 1;
+            update_grid[x - 1][y - 1] = 1;
           }
         }
       }
@@ -125,7 +121,7 @@ int main(void) {
     // Synchronise grids
     for (uint x = 0; x < GRID_WIDTH; x++) {
       for (uint y = 0; y < GRID_HEIGHT; y++) {
-        a2iRenderGrid[x][y] = a2iUpdateGrid[x][y];
+        render_grid[x][y] = update_grid[x][y];
       }
     }
 
