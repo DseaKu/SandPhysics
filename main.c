@@ -54,12 +54,11 @@ int main(void) {
   // Event handler
   SDL_Event e;
 
-  uint renderGrid[GRID_WIDTH][GRID_HEIGHT] = {0};
+  uint a2iRenderGrid[GRID_WIDTH][GRID_HEIGHT] = {0};
 
-  renderGrid[4][8] = 1;
-  renderGrid[4][2] = 1;
-  renderGrid[8][3] = 1;
-
+  a2iRenderGrid[4][8] = 1;
+  a2iRenderGrid[4][2] = 1;
+  a2iRenderGrid[8][3] = 1;
   // Main application loop
   while (!quit) {
 
@@ -78,7 +77,7 @@ int main(void) {
     // Iterate grid and render rects
     for (uint y = 0; y < GRID_HEIGHT; y++) {
       for (uint x = 0; x < GRID_WIDTH; x++) {
-        if (renderGrid[x][y] == 1) {
+        if (a2iRenderGrid[x][y] == 1) {
 
           // Draw a red rectangle
           SDL_Rect rect = {x * SQUARE_LENGTH, y * SQUARE_LENGTH, SQUARE_LENGTH,
@@ -90,27 +89,34 @@ int main(void) {
     }
 
     // Update grid
-    uint updateGrid[GRID_WIDTH][GRID_HEIGHT] = {0};
+    uint a2iUpdateGrid[GRID_WIDTH][GRID_HEIGHT] = {0};
     for (uint x = 0; x < GRID_WIDTH; x++) {
       for (uint y = 0; y < GRID_HEIGHT; y++) {
 
         // Gravity logic
         // Found square in grid
-        if (renderGrid[x][y] != 0) {
+        if (a2iRenderGrid[x][y] != 0) {
 
           // Stay if square is ground
           if (y == GRID_HEIGHT - 1) {
-            updateGrid[x][y] = 1;
+            a2iUpdateGrid[x][y] = 1;
           }
 
           // Try to move down, if under square is empty
-          else if (renderGrid[x][y + 1] == 0) {
-            updateGrid[x][y + 1] = 1;
+          else if (a2iRenderGrid[x][y + 1] == 0) {
+            a2iUpdateGrid[x][y + 1] = 1;
           }
 
-          else if (renderGrid[x + 1][y + 1] == 0) {
+          // Try to move down-right, if down-right is empty
+          else if (a2iRenderGrid[x + 1][y + 1] == 0) {
 
-            updateGrid[x + 1][y + 1] = 1;
+            a2iUpdateGrid[x + 1][y + 1] = 1;
+          }
+          //
+          // Try to move down-left, if down-left is empty
+          else if (a2iRenderGrid[x - 1][y - 1] == 0) {
+
+            a2iUpdateGrid[x - 1][y - 1] = 1;
           }
         }
       }
@@ -119,14 +125,14 @@ int main(void) {
     // Synchronise grids
     for (uint x = 0; x < GRID_WIDTH; x++) {
       for (uint y = 0; y < GRID_HEIGHT; y++) {
-        renderGrid[x][y] = updateGrid[x][y];
+        a2iRenderGrid[x][y] = a2iUpdateGrid[x][y];
       }
     }
 
     // Update the screen
     SDL_RenderPresent(renderer);
 
-    // 60 fps
+    // 16 -> 60 fps
     SDL_Delay(16);
   }
 
