@@ -81,49 +81,11 @@ int main(void) {
       }
     }
 
-    // Update grid
+    // Updating grid
     Grid update_grid = {0};
-
     updating_grid(render_grid, &update_grid);
 
-    for (uint x = 0; x < GRID_WIDTH; x++) {
-      for (uint y = 0; y < GRID_HEIGHT; y++) {
-
-        // Gravity logic
-        // Found square in grid
-        if (render_grid[x][y] != 0) {
-
-          // Stay if square is ground
-          if (y == GRID_HEIGHT - 1) {
-            update_grid[x][y] = 1;
-          }
-
-          // Try to move down, if under square is empty
-          else if (render_grid[x][y + 1] == 0) {
-            update_grid[x][y + 1] = 1;
-          }
-
-          // Try to move down-right, if down-right is empty
-          else if (render_grid[x + 1][y + 1] == 0) {
-
-            update_grid[x + 1][y + 1] = 1;
-          }
-          //
-          // Try to move down-left, if down-left is empty
-          else if (render_grid[x - 1][y - 1] == 0) {
-
-            update_grid[x - 1][y - 1] = 1;
-          }
-        }
-      }
-    }
-
-    // Synchronise grids
-    for (uint x = 0; x < GRID_WIDTH; x++) {
-      for (uint y = 0; y < GRID_HEIGHT; y++) {
-        render_grid[x][y] = update_grid[x][y];
-      }
-    }
+    synchronize_grid(&render_grid, &update_grid);
 
     // Update the screen
     SDL_RenderPresent(renderer);
