@@ -58,6 +58,7 @@ int main(void) {
 
   renderGrid[4][8] = 1;
   renderGrid[4][2] = 1;
+  renderGrid[8][3] = 1;
 
   // Main application loop
   while (!quit) {
@@ -103,10 +104,13 @@ int main(void) {
           }
 
           // Try to move down, if under square is empty
-          else if (renderGrid[x][y + 1] != 1) {
-
-            updateGrid[x][y] = 0;
+          else if (renderGrid[x][y + 1] == 0) {
             updateGrid[x][y + 1] = 1;
+          }
+
+          else if (renderGrid[x + 1][y + 1] == 0) {
+
+            updateGrid[x + 1][y + 1] = 1;
           }
         }
       }
