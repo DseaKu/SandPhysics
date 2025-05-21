@@ -1,0 +1,12 @@
+# Build directories
+build/
+*.o
+*.out
+*.exe
+
+# Editor files
+.vscode/
+.idea/
+
+# OS generated files
+.DS_Store
