@@ -1,0 +1,21 @@
+project_root/
+│
+├── include/            # Public header files (shared across modules)
+│   ├── grid_types.h    # Shared typedefs & constants (Grid, GRID_WIDTH, etc.)
+│   └── sdl_utils.h     # Common SDL helpers (if needed)
+│
+├── src/                # Main source files
+│   ├── main.c          # Entry point (SDL setup, main loop)
+│   ├── gravity_engine/ # Gravity simulation logic
+│   │   ├── gravity_engine.h  # Function declarations
+│   │   └── gravity_engine.c  # Implementation
+│   ├── input/          # Input handling
+│   │   ├── mouse_handler.h
+│   │   └── mouse_handler.c
+│   └── rendering/      # Graphics-related code
+│       ├── renderer.h
+│       └── renderer.c
+│
+├── build/              # Build output (generated, add to .gitignore)
+│
+└── Makefile            # Build configuration
