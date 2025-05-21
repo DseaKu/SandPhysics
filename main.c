@@ -102,7 +102,7 @@ int main(void) {
             updateGrid[x][y] = 1;
           }
 
-          // Try to move down
+          // Try to move down, if under square is empty
           else if (renderGrid[x][y + 1] != 1) {
 
             updateGrid[x][y] = 0;

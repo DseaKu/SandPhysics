@@ -9,7 +9,7 @@ SDL_CFLAGS := $(shell sdl2-config --cflags)
 SDL_LIBS := $(shell sdl2-config --libs)
 
 # Targets
-TARGET = sdl_window
+TARGET = Falling_Sand
 SRC = main.c
 OBJ = $(SRC:.c=.o)
 
