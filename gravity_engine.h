@@ -15,6 +15,6 @@
 typedef uint32_t Grid[GRID_WIDTH][GRID_HEIGHT];
 
 // Function declarations
-void updating_grid(const Grid current_grid);
+void updating_grid(const Grid current_grid, Grid *update_grid);
 
 #endif // GRAVITY_ENGINE_H

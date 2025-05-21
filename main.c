@@ -84,7 +84,7 @@ int main(void) {
     // Update grid
     Grid update_grid = {0};
 
-    updating_grid(render_grid);
+    updating_grid(render_grid, &update_grid);
 
     for (uint x = 0; x < GRID_WIDTH; x++) {
       for (uint y = 0; y < GRID_HEIGHT; y++) {
