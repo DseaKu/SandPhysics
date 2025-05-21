@@ -3,7 +3,7 @@ build/
 *.o
 *.out
 *.exe
-Falling_Sand
+SandPhysics
 
 # Editor files
 .vscode/

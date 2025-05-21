@@ -8,7 +8,7 @@ SDL_CFLAGS := $(shell sdl2-config --cflags)
 SDL_LIBS := $(shell sdl2-config --libs)
 
 # Targets
-TARGET = Falling_Sand
+TARGET = SandPhysics
 # SRC = main.c gravity_engine.c
 SRC = src/main.c \
 			src/gravity_engine/gravity_engine.c \
