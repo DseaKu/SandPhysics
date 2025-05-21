@@ -3,6 +3,7 @@ build/
 *.o
 *.out
 *.exe
+Falling_Sand
 
 # Editor files
 .vscode/
