@@ -50,27 +50,17 @@ int main(void) {
 
   // Main application loop
   while (!quit) {
+
     // Handle events on queue
     while (SDL_PollEvent(&e) != 0) {
       // User requests quit
       if (e.type == SDL_QUIT) {
         quit = 1;
       }
-      // Handle mouse click
-      else if (e.type == SDL_MOUSEBUTTONDOWN) {
-        if (e.button.button == SDL_BUTTON_LEFT) {
-          int mouseX, mouseY;
-          SDL_GetMouseState(&mouseX, &mouseY);
-          handle_mouse_click(&render_grid, mouseX, mouseY);
-        }
-      }
-      // Handle mouse motion while button is pressed
-      else if (e.type == SDL_MOUSEMOTION) {
-        if (e.motion.state & SDL_BUTTON_LMASK) {
-          int mouseX = e.motion.x;
-          int mouseY = e.motion.y;
-          handle_mouse_click(&render_grid, mouseX, mouseY);
-        }
+
+      // Process events
+      else {
+        handle_mouse_events(e, &render_grid);
       }
     }
 
