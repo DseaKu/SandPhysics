@@ -1,6 +1,8 @@
 #include "../includes/grid_types.h"
 #include "input/mouse_handler.h"
 #include "physics/physik_engine.h"
+#include "rendering/sdl_handler.h"
+#include <SDL2/SDL_render.h>
 
 // 16 -> 60 fps
 #define GAME_SPEED 8
@@ -13,34 +15,10 @@ int main(void) {
     return 1;
   }
 
-  // Create a window
-  SDL_Window *window =
-      SDL_CreateWindow("SDL2 Window",           // window title
-                       SDL_WINDOWPOS_UNDEFINED, // initial x position
-                       SDL_WINDOWPOS_UNDEFINED, // initial y position
-                       WINDOW_WIDTH,            // width, in pixels
-                       WINDOW_HEIGHT,           // height, in pixels
-                       SDL_WINDOW_SHOWN         // flags
-      );
-
-  if (window == NULL) {
-    printf("Window could not be created! SDL_Error: %s\n", SDL_GetError());
-    SDL_Quit();
-    return 1;
-  }
-
-  // Create a renderer for the window
-  SDL_Renderer *renderer =
-      SDL_CreateRenderer(window,
-                         -1, // index of the rendering driver to initialize
-                         SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
-
-  if (renderer == NULL) {
-    printf("Renderer could not be created! SDL_Error: %s\n", SDL_GetError());
-    SDL_DestroyWindow(window);
-    SDL_Quit();
-    return 1;
-  }
+  // Create a window, and renderer. Check if initializing failed
+  // Properties defined in sdl_handler.c
+  SDL_Window *window = create_sdl_window();
+  SDL_Renderer *renderer = create_sdl_renderer(window);
 
   // Main loop flag
   int quit = 0;

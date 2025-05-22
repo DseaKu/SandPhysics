@@ -13,6 +13,7 @@ TARGET = SandPhysics
 SRC = src/main.c \
 			src/physics/physic_engine.c\
 			src/input/mouse_handler.c \
+			src/rendering/sdl_handler.c \
 
 # Object files (same structure as source but in build dir)
 OBJ = $(patsubst src/%.c,build/%.o,$(SRC))
