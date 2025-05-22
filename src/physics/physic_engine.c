@@ -5,7 +5,6 @@ void updating_cells(const Grid current_grid, Grid *update_grid) {
   for (uint x = 0; x < GRID_WIDTH; x++) {
     for (uint y = 0; y < GRID_HEIGHT; y++) {
 
-      // Gravity logic
       // Found cell in grid
       if (current_grid[x][y] != 0) {
 
@@ -49,7 +48,7 @@ void synchronize_grids(Grid *current_grid, Grid *update_grid) {
   }
 }
 
-// Iterate grid and render rects
+// Iterate grid and render cells
 void rendering_grid(const Grid render_grid, SDL_Renderer *renderer) {
   for (uint y = 0; y < GRID_HEIGHT; y++) {
     for (uint x = 0; x < GRID_WIDTH; x++) {

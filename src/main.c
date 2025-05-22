@@ -50,7 +50,7 @@ int main(void) {
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     SDL_RenderClear(renderer);
 
-    // Add all squares to render matrix
+    // Add all cells to be rendered to the renderer
     rendering_grid(render_grid, renderer);
 
     // Updating cells
