@@ -2,6 +2,9 @@
 #include "input/mouse_handler.h"
 #include "physics/physik_engine.h"
 
+// 16 -> 60 fps
+#define GAME_SPEED 8
+
 int main(void) {
 
   // Initialize SDL
@@ -82,8 +85,7 @@ int main(void) {
     // Update the screen
     SDL_RenderPresent(renderer);
 
-    // 16 -> 60 fps
-    SDL_Delay(8);
+    SDL_Delay(GAME_SPEED);
   }
 
   // Destroy renderer and window

@@ -1,12 +1,10 @@
 #ifndef GRAVITY_TYPES_H
 #define GRAVITY_TYPES_H
 
-// Libraries
+#include "cell_types.h"
 #include "sdl_utils.h"
 #include <stdint.h>
 
-// Constants
-#define CELL_LENGTH 5
 #define GRID_HEIGHT (WINDOW_HEIGHT / CELL_LENGTH)
 #define GRID_WIDTH (WINDOW_WIDTH / CELL_LENGTH)
 

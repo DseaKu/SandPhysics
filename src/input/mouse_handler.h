@@ -1,6 +1,7 @@
 #ifndef MOUSE_HANDLER_H
 #define MOUSE_HANDLER_H
 
+#include "../../includes/cell_types.h"
 #include "../../includes/grid_types.h"
 #include "../../includes/sdl_utils.h"
 
