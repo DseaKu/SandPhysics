@@ -29,8 +29,8 @@ void handle_mouse_events(SDL_Event e, Grid *render_grid) {
 }
 void handle_mouse_click(Grid *grid, int mouseX, int mouseY) {
   // Convert screen coordinates to grid coordinates
-  int gridX = mouseX / SQUARE_LENGTH;
-  int gridY = mouseY / SQUARE_LENGTH;
+  int gridX = mouseX / CELL_LENGTH;
+  int gridY = mouseY / CELL_LENGTH;
 
   // Ensure coordinates are within bounds
   if (gridX >= 0 && gridX < GRID_WIDTH && gridY >= 0 && gridY < GRID_HEIGHT) {

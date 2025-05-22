@@ -11,7 +11,7 @@ SDL_LIBS := $(shell sdl2-config --libs)
 TARGET = SandPhysics
 # SRC = main.c gravity_engine.c
 SRC = src/main.c \
-			src/gravity_engine/gravity_engine.c \
+			src/physics/physic_engine.c\
 			src/input/mouse_handler.c \
 
 # Object files (same structure as source but in build dir)

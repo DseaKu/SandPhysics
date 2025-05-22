@@ -1,20 +1,20 @@
-#include "gravity_engine.h"
+#include "physik_engine.h"
 
-void updating_grid(const Grid current_grid, Grid *update_grid) {
+void updating_cells(const Grid current_grid, Grid *update_grid) {
 
   for (uint x = 0; x < GRID_WIDTH; x++) {
     for (uint y = 0; y < GRID_HEIGHT; y++) {
 
       // Gravity logic
-      // Found square in grid
+      // Found cell in grid
       if (current_grid[x][y] != 0) {
 
-        // Stay if square is ground
+        // Stay if cell is ground
         if (y == GRID_HEIGHT - 1) {
           (*update_grid)[x][y] = 1;
         }
 
-        // Try to move down, if under square is empty
+        // Try to move down, if under cell is empty
         else if (current_grid[x][y + 1] == 0) {
           (*update_grid)[x][y + 1] = 1;
         }
@@ -41,7 +41,7 @@ void updating_grid(const Grid current_grid, Grid *update_grid) {
 }
 
 // Synchronise grids
-void synchronize_grid(Grid *current_grid, Grid *update_grid) {
+void synchronize_grids(Grid *current_grid, Grid *update_grid) {
   for (uint x = 0; x < GRID_WIDTH; x++) {
     for (uint y = 0; y < GRID_HEIGHT; y++) {
       (*current_grid)[x][y] = (*update_grid)[x][y];
@@ -56,8 +56,8 @@ void rendering_grid(const Grid render_grid, SDL_Renderer *renderer) {
       if (render_grid[x][y] == 1) {
 
         // Draw a red rectangle
-        SDL_Rect rect = {x * SQUARE_LENGTH, y * SQUARE_LENGTH, SQUARE_LENGTH,
-                         SQUARE_LENGTH};
+        SDL_Rect rect = {x * CELL_LENGTH, y * CELL_LENGTH, CELL_LENGTH,
+                         CELL_LENGTH};
         SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
         SDL_RenderFillRect(renderer, &rect);
       }

@@ -1,6 +1,6 @@
 #include "../includes/grid_types.h"
-#include "gravity_engine/gravity_engine.h"
 #include "input/mouse_handler.h"
+#include "physics/physik_engine.h"
 
 int main(void) {
 
@@ -53,6 +53,7 @@ int main(void) {
 
     // Handle events on queue
     while (SDL_PollEvent(&e) != 0) {
+
       // User requests quit
       if (e.type == SDL_QUIT) {
         quit = 1;
@@ -64,25 +65,25 @@ int main(void) {
       }
     }
 
-    // Clear screen with a color (here: white)
+    // Clear screen
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     SDL_RenderClear(renderer);
 
     // Add all squares to render matrix
     rendering_grid(render_grid, renderer);
 
-    // Updating physics
+    // Updating cells
     Grid update_grid = {0};
-    updating_grid(render_grid, &update_grid);
+    updating_cells(render_grid, &update_grid);
 
     // Synchronize grids
-    synchronize_grid(&render_grid, &update_grid);
+    synchronize_grids(&render_grid, &update_grid);
 
     // Update the screen
     SDL_RenderPresent(renderer);
 
     // 16 -> 60 fps
-    SDL_Delay(16);
+    SDL_Delay(8);
   }
 
   // Destroy renderer and window
