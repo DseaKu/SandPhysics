@@ -3,18 +3,18 @@
 #include <stdint.h>
 
 #define CELL_LENGTH 5
-typedef struct color_t {
-  int8_t r;
-  int8_t g;
-  int8_t b;
-  int8_t occapacity;
-} color_t;
+typedef struct Color {
+  uint8_t r;
+  uint8_t g;
+  uint8_t b;
+  uint8_t occapacity;
+} Color;
 
 typedef struct cell_t {
-  int8_t id;
-  int32_t life_time;
-  int32_t velocity;
-  color_t color;
-} cell_t;
+  uint8_t cell_id;
+  uint32_t life_time;
+  uint32_t velocity;
+  Color color;
+} Cell;
 
 #endif // CELL_TYPES_H

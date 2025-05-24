@@ -1,0 +1,40 @@
+Naming Styles
+Type                             Convention             Example
+Variables                        snake_case             user_count, buffer_size
+Functions                        snake_case()           calculate_sum(), init_uart()
+Macros                           SCREAMING_SNAKE_CASE   MAX_BUFFER_SIZE, PI
+Types (typedef, struct, enum)    PascalCase             typedef struct {…} SensorData;
+Constants (const)                kPascalCase            kMaxUsers
+
+Prefix/Suffix
+refix/Suffix                     Meaning                Example
+g_                               Global variable        g_system_state
+p_                               Pointer variable       p_buffer
+is_                              Boolean flag           is_ready
+_t                               Type                   size_t
+m_                               Module-local (file-static)	static int m_private_var;
+
+
+#include <stdint.h>
+#include <stdbool.h>
+
+#define MAX_RETRIES  3U  // Macro: SCREAMING_SNAKE_CASE
+
+typedef enum {
+    STATUS_OK,       // Enum: PascalCase or UPPER_CASE
+    STATUS_ERROR
+} ResultCode;        // Type: PascalCase
+
+typedef struct {
+    uint32_t id;     // Struct member: snake_case
+    bool is_active;
+} UserData;          // Type: PascalCase
+
+static uint32_t g_user_count = 0U;  // Global: g_
+
+bool validate_input(const UserData *p_user) {  // Pointer: p_
+    if (p_user == NULL) {
+        return false;
+    }
+    return p_user->is_active;
+}

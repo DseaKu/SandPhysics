@@ -3,6 +3,7 @@
 
 #include "../../includes/grid_types.h"
 #include "../../includes/sdl_utils.h"
+#include "cell_physic.h"
 
 // Constants
 #define GRID_HEIGHT (WINDOW_HEIGHT / CELL_LENGTH)
