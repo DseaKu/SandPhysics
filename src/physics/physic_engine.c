@@ -1,6 +1,6 @@
 #include "physik_engine.h"
 
-void updating_cells(const Grid current_grid, Grid *update_grid) {
+void updating_cells(const Grid_t current_grid, Grid_t *update_grid) {
 
   for (uint x = 0; x < GRID_WIDTH; x++) {
     for (uint y = 0; y < GRID_HEIGHT; y++) {
@@ -40,7 +40,7 @@ void updating_cells(const Grid current_grid, Grid *update_grid) {
 }
 
 // Synchronise grids
-void synchronize_grids(Grid *current_grid, Grid *update_grid) {
+void synchronize_grids(Grid_t *current_grid, Grid_t *update_grid) {
   for (uint x = 0; x < GRID_WIDTH; x++) {
     for (uint y = 0; y < GRID_HEIGHT; y++) {
       (*current_grid)[x][y] = (*update_grid)[x][y];
@@ -49,7 +49,7 @@ void synchronize_grids(Grid *current_grid, Grid *update_grid) {
 }
 
 // Iterate grid and render cells
-void rendering_grid(const Grid render_grid, SDL_Renderer *renderer) {
+void rendering_grid(const Grid_t render_grid, SDL_Renderer *renderer) {
   for (uint y = 0; y < GRID_HEIGHT; y++) {
     for (uint x = 0; x < GRID_WIDTH; x++) {
       if (render_grid[x][y].cell_id == 1) {

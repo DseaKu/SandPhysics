@@ -3,6 +3,6 @@
 #include "../../includes/cell_types.h"
 #include "../../includes/grid_types.h"
 
-void update_cell_physics(Cell *p_Cell, Grid *update_grid);
+void update_cell_physics(Cell_t *p_Cell, Grid_t *update_grid);
 void sand_physics();
 #endif // CELL_PHYSIC_H

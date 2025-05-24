@@ -27,7 +27,7 @@ int main(void) {
   SDL_Event e;
 
   // Rendering grid matrix
-  Grid render_grid = {0};
+  Grid_t render_grid = {0};
 
   // Main application loop
   while (!quit) {
@@ -54,7 +54,7 @@ int main(void) {
     rendering_grid(render_grid, renderer);
 
     // Updating cells
-    Grid update_grid = {0};
+    Grid_t update_grid = {0};
     updating_cells(render_grid, &update_grid);
 
     // Synchronize grids

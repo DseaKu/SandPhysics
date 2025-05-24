@@ -10,8 +10,8 @@
 #define GRID_WIDTH (WINDOW_WIDTH / CELL_LENGTH)
 
 // Function declarations
-void updating_cells(const Grid current_grid, Grid *update_grid);
-void synchronize_grids(Grid *current_grid, Grid *update_grid);
-void rendering_grid(const Grid render_grid, SDL_Renderer *renderer);
+void updating_cells(const Grid_t current_grid, Grid_t *update_grid);
+void synchronize_grids(Grid_t *current_grid, Grid_t *update_grid);
+void rendering_grid(const Grid_t render_grid, SDL_Renderer *renderer);
 
 #endif // GRAVITY_ENGINE_H

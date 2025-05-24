@@ -9,6 +9,6 @@
 #define GRID_WIDTH (WINDOW_WIDTH / CELL_LENGTH)
 
 // Type definitions
-typedef Cell Grid[GRID_WIDTH][GRID_HEIGHT];
+typedef Cell_t Grid_t[GRID_WIDTH][GRID_HEIGHT];
 
 #endif // GRAVITY_TYPES_H
