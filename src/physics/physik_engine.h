@@ -10,7 +10,8 @@
 #define GRID_WIDTH (WINDOW_WIDTH / CELL_LENGTH)
 
 // Function declarations
-void cal_physic_cell_matrix(CellMatrix read_matrix, CellMatrix *p_write_matrix);
+void cal_physic_cell_matrix(const CellMatrix read_matrix,
+                            CellMatrix *p_write_matrix);
 
 void synchronize_matrices(CellMatrix *p_read_matrix,
                           CellMatrix *p_write_matrix);

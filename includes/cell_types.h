@@ -1,8 +1,9 @@
 #ifndef CELL_TYPES_H
-#define CELL_TYPES_H
-#include <stdint.h>
+#include "std_includes.h"
 
+#define CELL_TYPES_H
 #define CELL_LENGTH 5
+
 typedef struct Color_t {
   uint8_t r;
   uint8_t g;

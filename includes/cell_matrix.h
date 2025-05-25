@@ -3,7 +3,7 @@
 
 #include "cell_types.h"
 #include "sdl_utils.h"
-#include <stdint.h>
+#include "std_includes.h"
 
 #define MATRIX_HEIGHT (WINDOW_HEIGHT / CELL_LENGTH)
 #define MATRIX_WIDTH (WINDOW_WIDTH / CELL_LENGTH)

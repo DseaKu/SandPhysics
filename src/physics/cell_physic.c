@@ -1,6 +1,7 @@
 #include "cell_physic.h"
 
-void update_cell_physic(Cell read_cell_t, CellMatrix *p_update_grid) {}
+void update_cell_physic(Cell read_cell_t, CellMatrix *p_update_grid, uint32_t x,
+                        uint32_t y) {}
 void sand_physics() {
   //
   // // Stay if cell is ground

@@ -21,7 +21,7 @@ int main(void) {
   SDL_Renderer *p_renderer = create_sdl_renderer(p_window);
 
   // Main loop flag
-  int quit = 0;
+  bool is_quit = false;
 
   // Event handler
   SDL_Event e;
@@ -29,14 +29,14 @@ int main(void) {
   CellMatrix render_matrix = {0};
 
   // Main loop
-  while (!quit) {
+  while (!is_quit) {
 
     // Handle events on queue
     while (SDL_PollEvent(&e) != 0) {
 
       // User requests quit
       if (e.type == SDL_QUIT) {
-        quit = 1;
+        is_quit = true;
       }
       // Process events
       else {

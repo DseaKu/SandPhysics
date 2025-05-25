@@ -1,37 +1,39 @@
 #include "cell_physic.h"
 #include "physik_engine.h"
+#include <sys/types.h>
 
-void cal_physic_cell_matrix(CellMatrix read_matrix,
+void cal_physic_cell_matrix(const CellMatrix read_matrix,
                             CellMatrix *p_write_matrix) {
-  for (uint x = 0; x < GRID_WIDTH; x++) {
-    for (uint y = 0; y < GRID_HEIGHT; y++) {
+  for (uint32_t x = 0; x < GRID_WIDTH; x++) {
+    for (uint32_t y = 0; y < GRID_HEIGHT; y++) {
 
       // Found cell in grid
       if (read_matrix[x][y].cell_id != 0) {
 
-        update_cell_physic(read_matrix[x][y], p_write_matrix);
+        update_cell_physic(read_matrix[x][y], p_write_matrix, x, y);
       }
     }
   }
 }
 
 // Synchronise matrices
-void synchronize_matrices(CellMatrix *current_grid, CellMatrix *update_grid) {
-  for (uint x = 0; x < GRID_WIDTH; x++) {
-    for (uint y = 0; y < GRID_HEIGHT; y++) {
-      (*current_grid)[x][y] = (*update_grid)[x][y];
+void synchronize_matrices(CellMatrix *p_read_matrix,
+                          CellMatrix *p_write_matrix) {
+  for (uint32_t x = 0; x < GRID_WIDTH; x++) {
+    for (uint32_t y = 0; y < GRID_HEIGHT; y++) {
+      (*p_read_matrix)[x][y] = (*p_write_matrix)[x][y];
     }
   }
 }
 
 // Render cells
-void rendering_matrices(const CellMatrix render_grid,
+void rendering_matrices(const CellMatrix read_matrix,
                         SDL_Renderer *p_renderer) {
-  for (uint y = 0; y < GRID_HEIGHT; y++) {
-    for (uint x = 0; x < GRID_WIDTH; x++) {
-      if (render_grid[x][y].cell_id != 0) {
+  for (uint32_t y = 0; y < GRID_HEIGHT; y++) {
+    for (uint32_t x = 0; x < GRID_WIDTH; x++) {
+      if (read_matrix[x][y].cell_id != 0) {
 
-        // Draw a red rectangle
+        // Draw a square with cell color
         SDL_Rect rect = {x * CELL_LENGTH, y * CELL_LENGTH, CELL_LENGTH,
                          CELL_LENGTH};
         SDL_SetRenderDrawColor(p_renderer, 255, 0, 0, 255);
