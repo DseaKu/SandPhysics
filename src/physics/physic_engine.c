@@ -10,8 +10,7 @@ void cal_physic_cell_matrix(const CellMatrix read_matrix,
       // Find non-empty cell in cell matrix
       if (read_matrix[x][y].cell_id != EMPTY) {
 
-        update_cell_physic(read_matrix[x][y], read_matrix, p_write_matrix, x,
-                           y);
+        cal_physic_cell(read_matrix[x][y], read_matrix, p_write_matrix, x, y);
       }
     }
   }

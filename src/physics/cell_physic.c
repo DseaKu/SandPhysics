@@ -1,7 +1,7 @@
 #include "cell_physic.h"
 
-void update_cell_physic(Cell read_cell_t, const CellMatrix read_matrix,
-                        CellMatrix *p_update_matrix, uint32_t x, uint32_t y) {
+void cal_physic_cell(Cell read_cell_t, const CellMatrix read_matrix,
+                     CellMatrix *p_update_matrix, uint32_t x, uint32_t y) {
   // Determine cell id
   switch (read_cell_t.cell_id) {
   case EMPTY:
