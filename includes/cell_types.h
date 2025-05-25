@@ -8,13 +8,13 @@ typedef struct Color_t {
   uint8_t g;
   uint8_t b;
   uint8_t occapacity;
-} Color_t;
+} Color;
 
-typedef struct Cell_t {
+typedef struct Cell {
   uint8_t cell_id;
   uint32_t life_time;
   uint32_t velocity;
-  Color_t color;
-} Cell_t;
+  Color color;
+} Cell;
 
 #endif // CELL_TYPES_H

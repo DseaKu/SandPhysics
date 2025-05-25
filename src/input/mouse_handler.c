@@ -1,6 +1,6 @@
 #include "mouse_handler.h"
 
-void handle_mouse_events(SDL_Event e, Grid *render_grid) {
+void handle_mouse_events(SDL_Event e, CellMatrix *render_grid) {
 
   // Handle mouse click
   if (e.type == SDL_MOUSEBUTTONDOWN) {
@@ -27,13 +27,14 @@ void handle_mouse_events(SDL_Event e, Grid *render_grid) {
     }
   }
 }
-void handle_mouse_click(Grid *grid, int mouseX, int mouseY) {
+void handle_mouse_click(CellMatrix *grid, int mouseX, int mouseY) {
   // Convert screen coordinates to grid coordinates
   int gridX = mouseX / CELL_LENGTH;
   int gridY = mouseY / CELL_LENGTH;
 
   // Ensure coordinates are within bounds
-  if (gridX >= 0 && gridX < GRID_WIDTH && gridY >= 0 && gridY < GRID_HEIGHT) {
-    (*grid)[gridX][gridY] = 1;
+  if (gridX >= 0 && gridX < MATRIX_WIDTH && gridY >= 0 &&
+      gridY < MATRIX_HEIGHT) {
+    (*grid)[gridX][gridY].cell_id = 1;
   }
 }

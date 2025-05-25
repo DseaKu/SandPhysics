@@ -1,4 +1,4 @@
-#include "../includes/grid_types.h"
+#include "../includes/cell_matrix.h"
 #include "input/mouse_handler.h"
 #include "physics/physik_engine.h"
 #include "rendering/sdl_handler.h"
@@ -17,8 +17,8 @@ int main(void) {
 
   // Create a window, and renderer. Check if initializing failed
   // Properties defined in sdl_handler.c
-  SDL_Window *window = create_sdl_window();
-  SDL_Renderer *renderer = create_sdl_renderer(window);
+  SDL_Window *p_window = create_sdl_window();
+  SDL_Renderer *p_renderer = create_sdl_renderer(p_window);
 
   // Main loop flag
   int quit = 0;
@@ -26,10 +26,9 @@ int main(void) {
   // Event handler
   SDL_Event e;
 
-  // Rendering grid matrix
-  Grid_t render_grid = {0};
+  CellMatrix render_matrix = {0};
 
-  // Main application loop
+  // Main loop
   while (!quit) {
 
     // Handle events on queue
@@ -39,36 +38,35 @@ int main(void) {
       if (e.type == SDL_QUIT) {
         quit = 1;
       }
-
       // Process events
       else {
-        handle_mouse_events(e, &render_grid);
+        handle_mouse_events(e, &render_matrix);
       }
     }
 
     // Clear screen
-    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-    SDL_RenderClear(renderer);
+    SDL_SetRenderDrawColor(p_renderer, 255, 255, 255, 255);
+    SDL_RenderClear(p_renderer);
 
     // Add all cells to be rendered to the renderer
-    rendering_grid(render_grid, renderer);
+    rendering_matrices(render_matrix, p_renderer);
 
     // Updating cells
-    Grid_t update_grid = {0};
-    updating_cells(render_grid, &update_grid);
+    CellMatrix update_matrix = {0};
+    cal_physic_cell_matrix(render_matrix, &update_matrix);
 
-    // Synchronize grids
-    synchronize_grids(&render_grid, &update_grid);
+    // Synchronize matrices
+    synchronize_matrices(&render_matrix, &update_matrix);
 
     // Update the screen
-    SDL_RenderPresent(renderer);
+    SDL_RenderPresent(p_renderer);
 
     SDL_Delay(GAME_SPEED);
   }
 
   // Destroy renderer and window
-  SDL_DestroyRenderer(renderer);
-  SDL_DestroyWindow(window);
+  SDL_DestroyRenderer(p_renderer);
+  SDL_DestroyWindow(p_window);
 
   // Quit SDL subsystems
   SDL_Quit();

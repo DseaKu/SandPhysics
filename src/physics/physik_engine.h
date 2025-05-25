@@ -1,7 +1,7 @@
 #ifndef GRAVITY_ENGINE_H
 #define GRAVITY_ENGINE_H
 
-#include "../../includes/grid_types.h"
+#include "../../includes/cell_matrix.h"
 #include "../../includes/sdl_utils.h"
 #include "cell_physic.h"
 
@@ -10,8 +10,11 @@
 #define GRID_WIDTH (WINDOW_WIDTH / CELL_LENGTH)
 
 // Function declarations
-void updating_cells(const Grid_t current_grid, Grid_t *update_grid);
-void synchronize_grids(Grid_t *current_grid, Grid_t *update_grid);
-void rendering_grid(const Grid_t render_grid, SDL_Renderer *renderer);
+void cal_physic_cell_matrix(CellMatrix read_matrix, CellMatrix *p_write_matrix);
 
-#endif // GRAVITY_ENGINE_H
+void synchronize_matrices(CellMatrix *p_read_matrix,
+                          CellMatrix *p_write_matrix);
+
+void rendering_matrices(const CellMatrix read_matrix, SDL_Renderer *p_renderer);
+
+#endif // GRAVITY_ENGINE_iamaH
