@@ -1,34 +1,46 @@
 #include "cell_physic.h"
 
-void update_cell_physic(Cell read_cell_t, CellMatrix *p_update_grid, uint32_t x,
-                        uint32_t y) {}
-void sand_physics() {
-  //
-  // // Stay if cell is ground
-  // if (y == GRID_HEIGHT - 1) {
-  //   (*update_grid)[x][y] = 1;
-  // }
-  //
-  // // Try to move down,
+void update_cell_physic(Cell read_cell_t, const CellMatrix read_matrix,
+                        CellMatrix *p_update_matrix, uint32_t x, uint32_t y) {
+  // Determine cell id
+  switch (read_cell_t.cell_id) {
+  case EMPTY:
+    break;
+
+  case SAND:
+    sand_physic(read_cell_t, read_matrix, p_update_matrix, x, y);
+    break;
+  }
+}
+
+void sand_physic(Cell read_cell_t, const CellMatrix read_matrix,
+                 CellMatrix *p_update_matrix, uint32_t x, uint32_t y) {
+
+  // Stay if cell is ground
+  if (y == MATRIX_HEIGHT - 1) {
+    (*p_update_matrix)[x][y].cell_id = SAND;
+  }
+
+  // Try to move down,
   // if under cell is empty
-  // else if (current_grid[x][y + 1] == 0) {
-  //   (*update_grid)[x][y + 1] = 1;
-  // }
-  //
-  // // Try to move down-right, if down-right is empty and within bounds
-  // else if (x < GRID_WIDTH - 1 && current_grid[x + 1][y + 1] == 0) {
-  //
-  //   (*update_grid)[x + 1][y + 1] = 1;
-  // }
-  //
-  // // Try to move down-left, if down-left is empty and within bounds
-  // else if (x > 0 && current_grid[x - 1][y + 1] == 0) {
-  //
-  //   (*update_grid)[x - 1][y + 1] = 1;
-  // }
-  //
-  // // If no movement possible, stay in current position
-  // else {
-  //   (*update_grid)[x][y] = 1;
-  //}
+  else if (read_matrix[x][y + 1].cell_id == EMPTY) {
+    (*p_update_matrix)[x][y + 1].cell_id = SAND;
+  }
+
+  // Try to move down-right, if down-right is empty and within bounds
+  else if (x < MATRIX_WIDTH - 1 && read_matrix[x + 1][y + 1].cell_id == EMPTY) {
+
+    (*p_update_matrix)[x + 1][y + 1].cell_id = SAND;
+  }
+
+  // Try to move down-left, if down-left is empty and within bounds
+  else if (x > 0 && read_matrix[x - 1][y + 1].cell_id == EMPTY) {
+
+    (*p_update_matrix)[x - 1][y + 1].cell_id = SAND;
+  }
+
+  // If no movement possible, stay in current position
+  else {
+    (*p_update_matrix)[x][y].cell_id = SAND;
+  }
 }

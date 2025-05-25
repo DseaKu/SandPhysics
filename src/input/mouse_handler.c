@@ -35,6 +35,6 @@ void handle_mouse_click(CellMatrix *grid, int mouseX, int mouseY) {
   // Ensure coordinates are within bounds
   if (gridX >= 0 && gridX < MATRIX_WIDTH && gridY >= 0 &&
       gridY < MATRIX_HEIGHT) {
-    (*grid)[gridX][gridY].cell_id = 1;
+    (*grid)[gridX][gridY].cell_id = SAND;
   }
 }

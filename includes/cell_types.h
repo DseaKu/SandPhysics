@@ -4,6 +4,8 @@
 #define CELL_TYPES_H
 #define CELL_LENGTH 5
 
+typedef enum { EMPTY = 0, SAND = 1 } CellId;
+
 typedef struct Color_t {
   uint8_t r;
   uint8_t g;
@@ -12,7 +14,7 @@ typedef struct Color_t {
 } Color;
 
 typedef struct Cell {
-  uint8_t cell_id;
+  CellId cell_id;
   uint32_t life_time;
   uint32_t velocity;
   Color color;
