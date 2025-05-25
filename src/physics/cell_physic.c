@@ -10,6 +10,9 @@ void cal_physic_cell(Cell read_cell_t, const CellMatrix read_matrix,
   case SAND:
     sand_physic(read_cell_t, read_matrix, p_update_matrix, x, y);
     break;
+
+  case WATER:
+    break;
   }
 }
 

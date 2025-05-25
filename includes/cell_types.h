@@ -4,7 +4,7 @@
 #define CELL_TYPES_H
 #define CELL_LENGTH 5
 
-typedef enum { EMPTY = 0, SAND = 1 } CellId;
+typedef enum { EMPTY = 0, SAND = 1, WATER = 2 } CellId;
 
 typedef struct Color_t {
   uint8_t r;

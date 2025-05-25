@@ -18,15 +18,8 @@ void handle_mouse_events(SDL_Event e, CellMatrix *render_grid) {
       handle_mouse_click(render_grid, mouseX, mouseY);
     }
   }
-  // Handle mouse motion while button is pressed
-  else if (e.type == SDL_MOUSEMOTION) {
-    if (e.motion.state & SDL_BUTTON_LMASK) {
-      int mouseX = e.motion.x;
-      int mouseY = e.motion.y;
-      handle_mouse_click(render_grid, mouseX, mouseY);
-    }
-  }
 }
+
 void handle_mouse_click(CellMatrix *grid, int mouseX, int mouseY) {
   // Convert screen coordinates to grid coordinates
   int gridX = mouseX / CELL_LENGTH;
