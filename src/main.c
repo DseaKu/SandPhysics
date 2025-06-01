@@ -26,7 +26,7 @@ int main(void) {
   // Event handler
   SDL_Event e;
 
-  CellMatrix render_matrix = {0};
+  CellMatrix_t render_matrix = {0};
 
   // Main loop
   while (!is_quit) {
@@ -52,7 +52,7 @@ int main(void) {
     rendering_matrices(render_matrix, p_renderer);
 
     // Updating cells
-    CellMatrix update_matrix = {0};
+    CellMatrix_t update_matrix = {0};
     cal_physic_cell_matrix(render_matrix, &update_matrix);
 
     // Synchronize matrices

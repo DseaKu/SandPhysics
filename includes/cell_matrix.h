@@ -9,6 +9,6 @@
 #define MATRIX_WIDTH (WINDOW_WIDTH / CELL_LENGTH)
 
 // Type definitions
-typedef Cell CellMatrix[MATRIX_WIDTH][MATRIX_HEIGHT];
+typedef Cell_t CellMatrix_t[MATRIX_WIDTH][MATRIX_HEIGHT];
 
 #endif // GRAVITY_TYPES_H

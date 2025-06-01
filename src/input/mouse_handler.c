@@ -1,6 +1,6 @@
 #include "mouse_handler.h"
 
-void handle_mouse_events(SDL_Event e, CellMatrix *p_render_matrix) {
+void handle_mouse_events(SDL_Event e, CellMatrix_t *p_render_matrix) {
 
   switch (e.type) {
 
@@ -23,7 +23,7 @@ void handle_mouse_events(SDL_Event e, CellMatrix *p_render_matrix) {
   }
 }
 
-void set_cell(CellMatrix *p_render_matrix, int mouseX, int mouseY) {
+void set_cell(CellMatrix_t *p_render_matrix, int mouseX, int mouseY) {
   // Convert screen coordinates to matrix coordinates
   uint32_t gridX = mouseX / CELL_LENGTH;
   uint32_t gridY = mouseY / CELL_LENGTH;

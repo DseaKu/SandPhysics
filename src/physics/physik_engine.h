@@ -10,12 +10,13 @@
 #define GRID_WIDTH (WINDOW_WIDTH / CELL_LENGTH)
 
 // Function declarations
-void cal_physic_cell_matrix(const CellMatrix read_matrix,
-                            CellMatrix *p_write_matrix);
+void cal_physic_cell_matrix(const CellMatrix_t read_matrix,
+                            CellMatrix_t *p_write_matrix);
 
-void synchronize_matrices(CellMatrix *p_read_matrix,
-                          CellMatrix *p_write_matrix);
+void synchronize_matrices(CellMatrix_t *p_read_matrix,
+                          CellMatrix_t *p_write_matrix);
 
-void rendering_matrices(const CellMatrix read_matrix, SDL_Renderer *p_renderer);
+void rendering_matrices(const CellMatrix_t read_matrix,
+                        SDL_Renderer *p_renderer);
 
 #endif // GRAVITY_ENGINE_iamaH
