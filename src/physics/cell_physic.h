@@ -6,6 +6,6 @@
 void cal_physic_cell(Cell read_cell_t, const CellMatrix read_matrix,
                      CellMatrix *p_update_matrix, uint32_t x, uint32_t y);
 
-void sand_physic(Cell read_cell_t, const CellMatrix read_matrix,
-                 CellMatrix *p_update_matrix, uint32_t x, uint32_t y);
+void sand_physic(const CellMatrix read_matrix, CellMatrix *p_update_matrix,
+                 uint32_t x, uint32_t y);
 #endif // CELL_PHYSIC_H

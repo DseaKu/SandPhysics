@@ -8,7 +8,7 @@ void cal_physic_cell(Cell read_cell_t, const CellMatrix read_matrix,
     break;
 
   case SAND:
-    sand_physic(read_cell_t, read_matrix, p_update_matrix, x, y);
+    sand_physic(read_matrix, p_update_matrix, x, y);
     break;
 
   case WATER:
@@ -16,8 +16,8 @@ void cal_physic_cell(Cell read_cell_t, const CellMatrix read_matrix,
   }
 }
 
-void sand_physic(Cell read_cell_t, const CellMatrix read_matrix,
-                 CellMatrix *p_update_matrix, uint32_t x, uint32_t y) {
+void sand_physic(const CellMatrix read_matrix, CellMatrix *p_update_matrix,
+                 uint32_t x, uint32_t y) {
 
   // Stay if cell is ground
   if (y == MATRIX_HEIGHT - 1) {
