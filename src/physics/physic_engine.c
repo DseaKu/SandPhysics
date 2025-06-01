@@ -9,7 +9,7 @@ void cal_physic_cell_matrix(const CellMatrix_t read_matrix,
       // for (uint32_t y = 0; y < GRID_HEIGHT; y++) {
 
       // Find non-empty cell in cell matrix
-      if (read_matrix[x][y].cell_id != EMPTY) {
+      if (read_matrix[x][y].CellId != EMPTY) {
 
         cal_physic_cell(read_matrix[x][y], read_matrix, p_write_matrix, x, y);
       }
@@ -32,7 +32,7 @@ void rendering_matrices(const CellMatrix_t read_matrix,
                         SDL_Renderer *p_renderer) {
   for (uint32_t y = 0; y < GRID_HEIGHT; y++) {
     for (uint32_t x = 0; x < GRID_WIDTH; x++) {
-      if (read_matrix[x][y].cell_id != EMPTY) {
+      if (read_matrix[x][y].CellId != EMPTY) {
 
         // Draw a square with cell color
         SDL_Rect rect = {x * CELL_LENGTH, y * CELL_LENGTH, CELL_LENGTH,

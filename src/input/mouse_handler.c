@@ -31,6 +31,6 @@ void set_cell(CellMatrix_t *p_render_matrix, int mouseX, int mouseY) {
   // Ensure coordinates are within bounds
   if (gridX - 1 > 0 && gridX < MATRIX_WIDTH && gridY > 0 &&
       gridY < MATRIX_HEIGHT) {
-    (*p_render_matrix)[gridX][gridY].cell_id = SAND;
+    (*p_render_matrix)[gridX][gridY].CellId = SAND;
   }
 }
