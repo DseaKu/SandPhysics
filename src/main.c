@@ -28,20 +28,28 @@ int main(void) {
 
   CellMatrix_t render_matrix = {0};
 
+  MouseStatus_t MouseStatus = {.is_l_hold = false};
+
   // Main loop
   while (!is_quit) {
 
-    // Handle events on queue
-    while (SDL_PollEvent(&e) != 0) {
+    if (SDL_PollEvent(&e) == true) {
+      // Handle events on queue
+      while (SDL_PollEvent(&e) == true) {
 
-      // User requests quit
-      if (e.type == SDL_QUIT) {
-        is_quit = true;
+        // User requests quit
+        if (e.type == SDL_QUIT) {
+          is_quit = true;
+        }
+        // Process events
+        else {
+          handle_mouse_events(e, &render_matrix, &MouseStatus);
+        }
       }
-      // Process events
-      else {
-        handle_mouse_events(e, &render_matrix);
-      }
+    }
+    // If mouse is hold
+    else if (MouseStatus.is_l_hold) {
+      set_cell(&render_matrix, MouseStatus.x, MouseStatus.y);
     }
 
     // Clear screen
