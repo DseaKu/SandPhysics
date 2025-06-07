@@ -44,5 +44,6 @@ void set_cell(CellMatrix_t *p_read_matrix, uint32_t mouseX, uint32_t mouseY) {
   if (gridX - 1 > 0 && gridX < MATRIX_WIDTH && gridY > 0 &&
       gridY < MATRIX_HEIGHT) {
     (*p_read_matrix)[gridX][gridY].CellId = SAND;
+    (*p_read_matrix)[gridX][gridY].is_falling = true;
   }
 }

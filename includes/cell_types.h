@@ -18,6 +18,7 @@ typedef struct Cell_t {
   uint32_t life_time;
   uint32_t velocity;
   Color_t color;
+  bool is_falling;
 } Cell_t;
 
 #endif // CELL_TYPES_H
