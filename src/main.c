@@ -26,12 +26,14 @@ int main(void) {
   // Event handler
   SDL_Event e;
 
-  CellMatrix_t render_matrix = {0};
+  CellMatrix_t read_matrix = {0};
 
   MouseStatus_t MouseStatus = {.is_l_hold = false};
 
   // Main loop
   do {
+
+    CellMatrix_t write_matrix = {0};
 
     // Handle events on queue
     while (SDL_PollEvent(&e) == true) {
@@ -42,12 +44,12 @@ int main(void) {
       }
       // Process events
       else {
-        handle_mouse_events(e, &render_matrix, &MouseStatus);
+        handle_mouse_events(e, &write_matrix, &MouseStatus);
       }
     }
     // If mouse is hold
     if (MouseStatus.is_l_hold) {
-      set_cell(&render_matrix, MouseStatus.x, MouseStatus.y);
+      set_cell(&write_matrix, MouseStatus.x, MouseStatus.y);
     }
 
     // Clear screen
@@ -55,14 +57,13 @@ int main(void) {
     SDL_RenderClear(p_renderer);
 
     // Add all cells to be rendered to the renderer
-    rendering_matrices(render_matrix, p_renderer);
+    rendering_matrices(read_matrix, p_renderer);
 
     // Updating cells
-    CellMatrix_t update_matrix = {0};
-    cal_physic_cell_matrix(render_matrix, &update_matrix);
+    cal_physic_cell_matrix(read_matrix, &write_matrix);
 
     // Synchronize matrices
-    synchronize_matrices(&render_matrix, &update_matrix);
+    synchronize_matrices(&read_matrix, &write_matrix);
 
     // Update the screen
     SDL_RenderPresent(p_renderer);

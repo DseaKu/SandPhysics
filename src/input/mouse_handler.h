@@ -11,7 +11,7 @@ typedef struct MouseStatus_t {
   uint32_t y;
 } MouseStatus_t;
 
-void handle_mouse_events(SDL_Event e, CellMatrix_t *p_render_matrix,
+void handle_mouse_events(SDL_Event e, CellMatrix_t *p_read_matrix,
                          MouseStatus_t *p_MouseStatus);
 void set_cell(CellMatrix_t *p_cell_matrix, uint32_t mouseX, uint32_t mouseY);
 #endif //  MOUSE_HANDLER_H

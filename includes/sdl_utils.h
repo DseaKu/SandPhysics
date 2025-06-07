@@ -7,7 +7,7 @@
 #include <SDL2/SDL_timer.h>
 
 // Constants
-#define WINDOW_WIDTH 800
-#define WINDOW_HEIGHT 600
+#define WINDOW_WIDTH 1400
+#define WINDOW_HEIGHT 1000
 
 #endif // SDL_UTILS_H
