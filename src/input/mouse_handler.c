@@ -26,6 +26,8 @@ void handle_mouse_events(SDL_Event e, CellMatrix_t *p_render_matrix,
     if (e.motion.state & SDL_BUTTON_LMASK) {
       set_cell(p_render_matrix, e.motion.x, e.motion.y);
     }
+    p_MouseStatus->x = e.motion.x;
+    p_MouseStatus->y = e.motion.y;
     break;
 
   default:
