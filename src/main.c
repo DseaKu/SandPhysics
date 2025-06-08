@@ -1,11 +1,11 @@
 #include "../includes/cell_matrix.h"
 #include "input/mouse_handler.h"
-#include "physics/physik_engine.h"
+#include "physics/matrix_handler.h"
 #include "rendering/sdl_handler.h"
 #include <SDL2/SDL_render.h>
 
 // 16 -> 60 fps
-#define GAME_SPEED 16
+#define GAME_SPEED 10
 
 int main(void) {
 
@@ -23,12 +23,15 @@ int main(void) {
   // Main loop flag
   bool is_quit = false;
 
+  // Set rand seed with current time
+  srand(time(0));
+
   // Event handler
   SDL_Event e;
 
   CellMatrix_t read_matrix = {0};
 
-  MouseStatus_t MouseStatus = {.is_l_hold = false};
+  MouseStatus_t MouseState = {.is_l_hold = false};
 
   // Main loop
   do {
@@ -44,12 +47,12 @@ int main(void) {
       }
       // Process events
       else {
-        handle_mouse_events(e, &write_matrix, &MouseStatus);
+        handle_mouse_events(e, &write_matrix, &MouseState);
       }
     }
     // If mouse is hold
-    if (MouseStatus.is_l_hold) {
-      set_cell(&write_matrix, MouseStatus.x, MouseStatus.y);
+    if (MouseState.is_l_hold) {
+      set_cell(&write_matrix, MouseState.x, MouseState.y);
     }
 
     // Clear screen

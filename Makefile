@@ -11,10 +11,10 @@ SDL_LIBS := $(shell sdl2-config --libs)
 TARGET = SandPhysics
 # SRC = main.c gravity_engine.c
 SRC = src/main.c \
-			src/physics/physic_engine.c\
+			src/physics/matrix_handler.c\
 			src/input/mouse_handler.c \
 			src/rendering/sdl_handler.c \
-			src/physics/cell_physic.c \
+			src/physics/cell_handler.c \
 
 # Object files (same structure as source but in build dir)
 OBJ = $(patsubst src/%.c,build/%.o,$(SRC))

@@ -6,7 +6,6 @@
 #include <SDL2/SDL_render.h>
 #include <SDL2/SDL_timer.h>
 
-// Constants
 #define WINDOW_WIDTH 1400
 #define WINDOW_HEIGHT 1000
 

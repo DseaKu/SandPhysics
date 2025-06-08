@@ -1,4 +1,5 @@
 #include "mouse_handler.h"
+#include <stdint.h>
 
 void handle_mouse_events(SDL_Event e, CellMatrix_t *p_read_matrix,
                          MouseStatus_t *p_MouseStatus) {
@@ -35,15 +36,23 @@ void handle_mouse_events(SDL_Event e, CellMatrix_t *p_read_matrix,
   }
 }
 
-void set_cell(CellMatrix_t *p_read_matrix, uint32_t mouseX, uint32_t mouseY) {
-  // Convert screen coordinates to matrix coordinates
-  uint32_t gridX = mouseX / CELL_LENGTH;
-  uint32_t gridY = mouseY / CELL_LENGTH;
+void set_cell(CellMatrix_t *p_read_matrix, uint32_t mouse_x, uint32_t mouse_y) {
 
-  // Ensure coordinates are within bounds
-  if (gridX - 1 > 0 && gridX < MATRIX_WIDTH && gridY > 0 &&
-      gridY < MATRIX_HEIGHT) {
-    (*p_read_matrix)[gridX][gridY].CellId = SAND;
-    (*p_read_matrix)[gridX][gridY].is_falling = true;
+  // Convert screen coordinates to matrix coordinates
+  uint32_t matrix_x = mouse_x / CELL_LENGTH;
+  uint32_t matrix_y = mouse_y / CELL_LENGTH;
+
+  for (uint32_t i = 0; i < SPREAD_DENSITY; i++) {
+
+    // Set random xy-coordinates
+    uint32_t rand_x = matrix_x - SPREAD_SCOPE / 2 + rand() % SPREAD_SCOPE;
+    uint32_t rand_y = matrix_y - SPREAD_SCOPE / 2 + rand() % SPREAD_SCOPE;
+
+    // Set cell, ensure coordinates are within bounds
+    if (rand_x - 1 > 0 && rand_x < MATRIX_WIDTH && rand_y > 0 &&
+        rand_y < MATRIX_HEIGHT) {
+      (*p_read_matrix)[rand_x][rand_y].CellId = SAND;
+      (*p_read_matrix)[rand_x][rand_y].is_falling = true;
+    }
   }
 }
