@@ -4,9 +4,9 @@
 #define CELL_TYPES_H
 #define CELL_LENGTH 3
 #define SPREAD_SCOPE 20
-#define SPREAD_DENSITY 3
+#define SPREAD_DENSITY 2
 
-typedef enum { EMPTY = 0, SAND = 1, WATER = 2 } CellId_t;
+typedef enum { EMPTY = 0, SAND = 1, WATER = 2, SOLID = 3 } CellId_t;
 
 typedef struct Color_t {
   uint8_t r;
