@@ -4,8 +4,8 @@
 
 void cal_physic_cell_matrix(const CellMatrix_t read_matrix,
                             CellMatrix_t *p_write_matrix) {
-  for (uint32_t x = 0; x < GRID_WIDTH; x++) {
-    for (uint32_t y = 0; y < GRID_HEIGHT; y++) {
+  for (uint32_t x = 0; x < MATRIX_WIDTH; x++) {
+    for (uint32_t y = 0; y < MATRIX_HEIGHT; y++) {
 
       // Find non-empty cell in cell matrix
       if (read_matrix[x][y].CellId != EMPTY) {
@@ -19,26 +19,9 @@ void cal_physic_cell_matrix(const CellMatrix_t read_matrix,
 // Synchronise matrices
 void synchronize_matrices(CellMatrix_t *p_read_matrix,
                           CellMatrix_t *p_write_matrix) {
-  for (uint32_t x = 0; x < GRID_WIDTH; x++) {
-    for (uint32_t y = 0; y < GRID_HEIGHT; y++) {
+  for (uint32_t x = 0; x < MATRIX_WIDTH; x++) {
+    for (uint32_t y = 0; y < MATRIX_HEIGHT; y++) {
       (*p_read_matrix)[x][y] = (*p_write_matrix)[x][y];
-    }
-  }
-}
-
-// Render cells
-void rendering_matrices(const CellMatrix_t read_matrix,
-                        SDL_Renderer *p_renderer) {
-  for (uint32_t y = 0; y < GRID_HEIGHT; y++) {
-    for (uint32_t x = 0; x < GRID_WIDTH; x++) {
-      if (read_matrix[x][y].CellId != EMPTY) {
-
-        // Draw a square with cell color
-        SDL_Rect rect = {x * CELL_LENGTH, y * CELL_LENGTH, CELL_LENGTH,
-                         CELL_LENGTH};
-        SDL_SetRenderDrawColor(p_renderer, 255, 0, 0, 255);
-        SDL_RenderFillRect(p_renderer, &rect);
-      }
     }
   }
 }

@@ -5,7 +5,7 @@
 #include <SDL2/SDL_render.h>
 
 // 16 -> 60 fps
-#define GAME_SPEED 10
+#define GAME_SPEED 1
 
 int main(void) {
 

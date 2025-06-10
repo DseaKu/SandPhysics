@@ -2,9 +2,9 @@
 #include "std_includes.h"
 
 #define CELL_TYPES_H
-#define CELL_LENGTH 3
-#define SPREAD_SCOPE 20
-#define SPREAD_DENSITY 2
+#define CELL_LENGTH 4
+#define SPREAD_SCOPE 30
+#define SPREAD_DENSITY 5
 
 typedef enum { EMPTY = 0, SAND = 1, WATER = 2, SOLID = 3 } CellId_t;
 

@@ -1,5 +1,5 @@
-#ifndef GRAVITY_TYPES_H
-#define GRAVITY_TYPES_H
+#ifndef CELL_MATRIX_H
+#define CELL_MATRIX_H
 
 #include "cell_types.h"
 #include "sdl_utils.h"
@@ -11,4 +11,4 @@
 // Type definitions
 typedef Cell_t CellMatrix_t[MATRIX_WIDTH][MATRIX_HEIGHT];
 
-#endif // GRAVITY_TYPES_H
+#endif // CELL_MATRIX_H
