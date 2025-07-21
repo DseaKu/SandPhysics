@@ -2,7 +2,7 @@
 #include "input/mouse_handler.h"
 #include "physics/matrix_handler.h"
 #include "rendering/sdl_handler.h"
-#include <SDL2/SDL_render.h>
+#include <SDL_render.h>
 
 // 16 -> 60 fps
 #define GAME_SPEED 1

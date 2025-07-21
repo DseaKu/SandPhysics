@@ -4,8 +4,9 @@ CFLAGS = -Wall -Wextra -std=c11 -g
 
 
 # SDL2 configuration
-SDL_CFLAGS := $(shell sdl2-config --cflags)
-SDL_LIBS := $(shell sdl2-config --libs)
+SDL_CONFIG := /opt/homebrew/bin/sdl2-config
+SDL_CFLAGS := $(shell $(SDL_CONFIG) --cflags)
+SDL_LIBS := $(shell $(SDL_CONFIG) --libs)
 
 # Targets
 TARGET = SandPhysics

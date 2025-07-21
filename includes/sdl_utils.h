@@ -2,11 +2,11 @@
 #define SDL_UTILS_H
 
 // Libraries
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_render.h>
-#include <SDL2/SDL_timer.h>
+#include <SDL.h>
+#include <SDL_render.h>
+#include <SDL_timer.h>
 
-#define WINDOW_WIDTH 2200
-#define WINDOW_HEIGHT 1200
+#define WINDOW_WIDTH 1200
+#define WINDOW_HEIGHT 520
 
 #endif // SDL_UTILS_H

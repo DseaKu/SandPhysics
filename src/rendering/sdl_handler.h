@@ -3,8 +3,8 @@
 
 #include "../../includes/cell_matrix.h"
 #include "../../includes/sdl_utils.h"
-#include <SDL2/SDL_render.h>
-#include <SDL2/SDL_video.h>
+#include <SDL_render.h>
+#include <SDL_video.h>
 
 SDL_Window *create_sdl_window();
 
