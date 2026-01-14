@@ -2,6 +2,10 @@
 
 A C-based falling sand simulation engine using SDL2.
 
+## Demo
+
+![Sand Physics Simulation Demo](assets/demo.gif)
+
 ## Prerequisites
 
 - **C Compiler**: GCC or Clang (supporting C11).
