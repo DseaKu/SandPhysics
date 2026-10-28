@@ -15,36 +15,13 @@ A C-based falling sand simulation engine using SDL2.
   - **Fedora**: `sudo dnf install SDL2-devel`
 
 ## Compilation
-
-The project uses a `Makefile` for building.
-
-**Note for macOS users**: The `Makefile` currently expects `sdl2-config` to be located at `/opt/homebrew/bin/sdl2-config`. If your installation is different (e.g., Intel Mac or Linux), you may need to edit the `SDL_CONFIG` variable in the `Makefile` or override it:
-
-```bash
-make SDL_CONFIG=$(which sdl2-config)
-```
-
 To build the project:
 
 ```bash
 make
 ```
 
-To clean build artifacts:
-
-```bash
-make clean
-```
-
 ## Running
-
-After compilation, you can run the simulation directly or via `make`:
-
-```bash
-./SandPhysics
-```
-
-or
 
 ```bash
 make run
